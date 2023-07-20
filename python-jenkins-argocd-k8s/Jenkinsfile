@@ -10,7 +10,7 @@ pipeline {
         
         stage('Checkout'){
            steps {
-                git branch: 'main', url: 'https://github.com/iam-veeramalla/cicd-end-to-end.git'
+                git branch: 'Argocd', url: 'https://github.com/mbreddy507/week-24-project.git'
            }
         }
 
@@ -19,7 +19,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Buid Docker Image'
-                    docker build -t mahesh8887/jenkin-ci-cd:${BUILD_NUMBER} .
+                    docker build -t mbreddy507/argocd:${BUILD_NUMBER} .
                     '''
                 }
             }
@@ -30,7 +30,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Push to Repo'
-                    docker push mahesh8887/jenkin-ci-cd:${BUILD_NUMBER}
+                    docker push mbreddy507/argocd:${BUILD_NUMBER}
                     '''
                 }
             }
